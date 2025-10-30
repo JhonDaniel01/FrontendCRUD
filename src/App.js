@@ -3,6 +3,13 @@ import Navbar from "./components/Navbar";
 import ListaUsuarios from "./components/ListaUsuarios";
 import Formulario from "./components/formulario";
 function App() {
+  const [usuario, setUsuario] = useState({
+    nombre: "",
+    email: "",
+    contrasena: "",
+    rol: "",
+  });
+  const [listaActualizada, setlistaActualizada] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
   useEffect(() => {
     const getUsuarios = () => {
@@ -11,7 +18,8 @@ function App() {
         .then((res) => setUsuarios(res));
     };
     getUsuarios();
-  }, []);
+    setlistaActualizada(false);
+  }, [listaActualizada]);
 
   return (
     <Fragment>
@@ -20,11 +28,15 @@ function App() {
         <div className="row">
           <div className="col-5">
             <h2 style={{ textAlign: "center" }}>Formulario Usuarios</h2>
-            <Formulario></Formulario>
+            <Formulario usuario={usuario} setUsuario={setUsuario} />
           </div>
           <div className="col-7">
             <h2 style={{ textAlign: "center" }}>Lista de usuarios</h2>
-            <ListaUsuarios usuarios={usuarios} />
+            <ListaUsuarios
+              usuario={usuario}
+              usuarios={usuarios}
+              setlistaActualizada={setlistaActualizada}
+            />
           </div>
         </div>
       </div>
