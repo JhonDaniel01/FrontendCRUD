@@ -26,11 +26,11 @@ function App() {
       <Navbar brand="Usuarios"></Navbar>
       <div className="container">
         <div className="row">
-          <div className="col-5">
+          <div className="col-4">
             <h2 style={{ textAlign: "center" }}>Formulario Usuarios</h2>
             <Formulario usuario={usuario} setUsuario={setUsuario} />
           </div>
-          <div className="col-7">
+          <div className="col-8">
             <h2 style={{ textAlign: "center" }}>Lista de usuarios</h2>
             <ListaUsuarios
               usuario={usuario}

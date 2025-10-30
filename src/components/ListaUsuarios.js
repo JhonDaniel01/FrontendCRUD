@@ -55,18 +55,20 @@ const ListaUsuarios = ({ usuario, usuarios, setlistaActualizada }) => {
             <td>
               <div className="mb-3">
                 <button
-                  onClick={() => handleDelete(usuario.id_usuario)}
-                  className="btn btn-danger"
-                >
-                  Borrar
-                </button>
-              </div>
-              <div className="mb-3">
-                <button
                   onClick={() => handleUpdate(usuario.id_usuario)}
                   className="btn btn-dark"
                 >
                   Actualizar
+                </button>
+              </div>
+            </td>
+            <td>
+              <div className="mb-3">
+                <button
+                  onClick={() => handleDelete(usuario.id_usuario)}
+                  className="btn btn-danger"
+                >
+                  Borrar
                 </button>
               </div>
             </td>
