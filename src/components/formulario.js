@@ -16,7 +16,7 @@ const Formulario = ({ usuario, setUsuario }) => {
       usuario.contrasena === "" ||
       usuario.rol === ""
     ) {
-      alert("Todos los campos son obligatorios");
+      alert("Todos los campos son obligatorios para crear un nuevo registro");
       return;
     }
     //consulta
@@ -30,6 +30,7 @@ const Formulario = ({ usuario, setUsuario }) => {
     fetch("http://localhost:3006/usuarios", opciones)
       .then((res) => res.json())
       .then((res) => console.log(res));
+
     setUsuario({
       id_usuario: "",
       nombre: "",
@@ -40,18 +41,6 @@ const Formulario = ({ usuario, setUsuario }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      {/* <div className="mb-3">
-        <label htmlFor="id" className="form-label">
-          Id
-        </label>
-        <input
-          name="id_usuario"
-          onChange={handleChange}
-          type="number"
-          id="id"
-          className="form-control"
-        ></input>
-      </div> */}
       <div className="mb-3">
         <label htmlFor="usuario" className="form-label">
           Usuario

@@ -2,12 +2,17 @@ import React from "react";
 
 const ListaUsuarios = ({ usuario, usuarios, setlistaActualizada }) => {
   const handleDelete = (id) => {
-    const opciones = {
-      method: "DELETE",
-    };
-    fetch("http://localhost:3006/usuarios/" + id, opciones)
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    const confirmar = window.confirm(
+      `¿Seguro que deseas eliminar el registro ${id}?`
+    );
+    if (confirmar) {
+      const opciones = {
+        method: "DELETE",
+      };
+      fetch("http://localhost:3006/usuarios/" + id, opciones)
+        .then((res) => res.json())
+        .then((res) => console.log(res));
+    }
     setlistaActualizada(true);
   };
   const handleUpdate = (id) => {
@@ -18,7 +23,9 @@ const ListaUsuarios = ({ usuario, usuarios, setlistaActualizada }) => {
       usuario.contrasena === "" ||
       usuario.rol === ""
     ) {
-      alert("Todos los campos son obligatorios");
+      alert(
+        "Diligencie todos los campos para actualizar el registro numero " + id
+      );
       return;
     }
     const opciones = {
